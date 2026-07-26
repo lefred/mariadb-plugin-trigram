@@ -1,0 +1,58 @@
+SELECT ROUND(TRIGRAM_SIMILARITY('cat', 'cat'), 6);
+ROUND(TRIGRAM_SIMILARITY('cat', 'cat'), 6)
+1.000000
+SELECT ROUND(TRIGRAM_SIMILARITY('cat', 'dog'), 6);
+ROUND(TRIGRAM_SIMILARITY('cat', 'dog'), 6)
+0.000000
+SELECT ROUND(TRIGRAM_SIMILARITY('MariaDB', 'mariadb'), 6);
+ROUND(TRIGRAM_SIMILARITY('MariaDB', 'mariadb'), 6)
+1.000000
+SELECT ROUND(TRIGRAM_SIMILARITY('', ''), 6);
+ROUND(TRIGRAM_SIMILARITY('', ''), 6)
+1.000000
+SELECT TRIGRAM_SIMILARITY(NULL, 'cat');
+TRIGRAM_SIMILARITY(NULL, 'cat')
+NULL
+SELECT ROUND(TRIGRAM_WORD_SIMILARITY('database',
+'a fast database server'), 6);
+ROUND(TRIGRAM_WORD_SIMILARITY('database',
+'a fast database server'), 6)
+1.000000
+SELECT ROUND(TRIGRAM_STRICT_WORD_SIMILARITY('data',
+'metadata database'), 6);
+ROUND(TRIGRAM_STRICT_WORD_SIMILARITY('data',
+'metadata database'), 6)
+0.400000
+SELECT ROUND(TRIGRAM_STRICT_WORLD_SIMILARIRY('data',
+'metadata database'), 6);
+ROUND(TRIGRAM_STRICT_WORLD_SIMILARIRY('data',
+'metadata database'), 6)
+0.400000
+SELECT TRIGRAMS('cat');
+TRIGRAMS('cat')
+["  c"," ca","at ","cat"]
+SELECT TRIGRAM_COUNT('cat');
+TRIGRAM_COUNT('cat')
+4
+SELECT ROUND(TRIGRAM_DISTANCE('cat', 'cat'), 6);
+ROUND(TRIGRAM_DISTANCE('cat', 'cat'), 6)
+0.000000
+SELECT TRIGRAM_MATCH('cat', 'cats', 0.4);
+TRIGRAM_MATCH('cat', 'cats', 0.4)
+1
+SELECT TRIGRAM_MATCH('cat', 'dog', 0.4);
+TRIGRAM_MATCH('cat', 'dog', 0.4)
+0
+SELECT TRIGRAM_MATCH('cat', 'dog', 1.1);
+TRIGRAM_MATCH('cat', 'dog', 1.1)
+NULL
+SELECT TRIGRAMS(_utf8mb4'café');
+TRIGRAMS(_utf8mb4'café')
+["  c"," ca","af\u00e9","caf","f\u00e9 "]
+SELECT ROUND(TRIGRAM_SIMILARITY(_utf8mb4'CAFÉ', _utf8mb4'café'), 6);
+ROUND(TRIGRAM_SIMILARITY(_utf8mb4'CAFÉ', _utf8mb4'café'), 6)
+1.000000
+SELECT TRIGRAM_SIMILARITY('one');
+ERROR 42000: Incorrect parameter count in the call to native function 'TRIGRAM_SIMILARITY'
+SELECT TRIGRAMS('one', 'two');
+ERROR 42000: Incorrect parameter count in the call to native function 'TRIGRAMS'

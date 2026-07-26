@@ -1,0 +1,27 @@
+SELECT ROUND(TRIGRAM_SIMILARITY('cat', 'cat'), 6);
+SELECT ROUND(TRIGRAM_SIMILARITY('cat', 'dog'), 6);
+SELECT ROUND(TRIGRAM_SIMILARITY('MariaDB', 'mariadb'), 6);
+SELECT ROUND(TRIGRAM_SIMILARITY('', ''), 6);
+SELECT TRIGRAM_SIMILARITY(NULL, 'cat');
+
+SELECT ROUND(TRIGRAM_WORD_SIMILARITY('database',
+                                     'a fast database server'), 6);
+SELECT ROUND(TRIGRAM_STRICT_WORD_SIMILARITY('data',
+                                            'metadata database'), 6);
+SELECT ROUND(TRIGRAM_STRICT_WORLD_SIMILARIRY('data',
+                                             'metadata database'), 6);
+
+SELECT TRIGRAMS('cat');
+SELECT TRIGRAM_COUNT('cat');
+SELECT ROUND(TRIGRAM_DISTANCE('cat', 'cat'), 6);
+SELECT TRIGRAM_MATCH('cat', 'cats', 0.4);
+SELECT TRIGRAM_MATCH('cat', 'dog', 0.4);
+SELECT TRIGRAM_MATCH('cat', 'dog', 1.1);
+
+SELECT TRIGRAMS(_utf8mb4'café');
+SELECT ROUND(TRIGRAM_SIMILARITY(_utf8mb4'CAFÉ', _utf8mb4'café'), 6);
+
+--error ER_WRONG_PARAMCOUNT_TO_NATIVE_FCT
+SELECT TRIGRAM_SIMILARITY('one');
+--error ER_WRONG_PARAMCOUNT_TO_NATIVE_FCT
+SELECT TRIGRAMS('one', 'two');
