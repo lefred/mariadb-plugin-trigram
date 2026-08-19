@@ -588,7 +588,7 @@ public:
 #define TRIGRAM_PLUGIN(item, sql_name, description)                         \
   { MariaDB_FUNCTION_PLUGIN, item::plugin_descriptor(), sql_name, "lefred", \
     description, PLUGIN_LICENSE_GPL, nullptr, nullptr, 0x0100, nullptr,      \
-    nullptr, "1.0", MariaDB_PLUGIN_MATURITY_EXPERIMENTAL }
+    nullptr, "0.2.0", MariaDB_PLUGIN_MATURITY_BETA }
 
 maria_declare_plugin(trigram)
   TRIGRAM_PLUGIN(Item_func_similarity, "trigram_similarity",
