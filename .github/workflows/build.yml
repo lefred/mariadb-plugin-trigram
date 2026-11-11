@@ -15,18 +15,17 @@ permissions:
 
 jobs:
   build:
-    uses: lefred/mariadb-plugin-ci/.github/workflows/build-plugin.yml@main
+    uses: lefred/mariadb-plugin-ci/.github/workflows/build-plugin.yml@v1
     with:
       plugin_name: trigram
       plugin_directory: trigram
       build_target: trigram
       plugin_library: trigram.so
 
-      sdk_image: quay.io/lefred14/mariadb-plugin-build
       mariadb_versions: |
           13.0.2
           13.1.1
           
-      cmake_options: -DPLUGIN_DATE_EXTRA=DYNAMIC
+      cmake_options: -DPLUGIN_TRIGRAM=DYNAMIC
       test_suite: trigram
       run_tests: false
